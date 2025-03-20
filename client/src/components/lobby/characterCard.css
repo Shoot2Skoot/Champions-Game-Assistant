@@ -1,0 +1,156 @@
+/* Define aspect colors using CSS variables */
+.character-card {
+	--aspect-color: var(--grey-dark); /* Default (neutral) */
+}
+
+/* Apply aspect-specific colors using [data-aspect] */
+.character-card[data-aspect='aggression'] {
+	--aspect-color: var(--aggression-color); /* Red */
+}
+
+.character-card[data-aspect='leadership'] {
+	--aspect-color: var(--leadership-color); /* Blue */
+}
+
+.character-card[data-aspect='justice'] {
+	--aspect-color: var(--justice-color); /* Yellow */
+}
+
+.character-card[data-aspect='pool'] {
+	--aspect-color: var(--pool-color); /* Green */
+}
+
+.character-card[data-aspect='protection'] {
+	--aspect-color: var(--protection-color); /* Green */
+}
+
+.character-card {
+	display: inline-block;
+	text-align: center;
+	width: clamp(80px, 28%, 200px);
+	margin: clamp(0.5rem, 2%, 1rem);
+	padding: clamp(2px, 0.5vw, 5px);
+	font-family: sans-serif;
+	vertical-align: top;
+}
+
+.character-card__image-wrapper {
+	position: relative;
+	border: clamp(2px, 0.3vw, 3px) solid var(--aspect-color);
+	border-radius: clamp(4px, 0.8vw, 8px);
+	overflow: hidden;
+}
+
+.character-card__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+}
+
+.character-card__checkbox {
+	position: absolute;
+	padding: 2%;
+	top: 4%;
+	right: 4%;
+	width: 15%;
+	height: 15%;
+	border: clamp(1px, 0.3vw, 3px) solid var(--aspect-color);
+	border-radius: 50%;
+	background-color: var(--background-color);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	content: '';
+	color: var(--aspect-color);
+	z-index: 20;
+	font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+.character-card-ready .character-card__checkbox {
+	display: flex;
+}
+
+.character-card__player-tag {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: clamp(2px, 1vh, 6px) 0;
+	background-color: var(--aspect-color);
+	color: var(--background-color);
+	font-weight: bold;
+	display: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: clamp(0.6rem, 2.5vw, 1rem);
+	font-family: var(--font-body);
+	font-weight: var(--h3-font-weight);
+	text-transform: uppercase;
+	transition: all 0.3s ease-in-out;
+}
+
+.character-card--with-player .character-card__player-tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.character-card__label {
+	margin: auto;
+	margin-top: clamp(4px, 1vw, 8px);
+	font-size: clamp(0.7rem, 2vw, 1rem);
+	text-wrap: wrap;
+	width: 100%;
+	line-height: 1.2;
+	font-family: var(--font-body);
+	font-weight: var(--h3-font-weight);
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.character-card:not(.character-card--selected):hover
+		.character-card__image-wrapper {
+		scale: 1.25;
+		box-shadow: #111 0px 16px 15px, #111 10px 10px 15px,
+			#111 -10px 10px 15px;
+		position: relative;
+		border: #0cf solid clamp(2px, 0.4vw, 4px);
+		z-index: 10;
+		transition: all 0.3s ease-in-out;
+	}
+}
+
+/* Add responsive breakpoints */
+@media screen and (max-width: 768px) {
+	.character-card {
+		width: clamp(70px, 45%, 150px);
+	}
+
+	.character-card__player-tag {
+		font-size: clamp(0.5rem, 3vw, 0.8rem);
+		padding: clamp(2px, 0.8vh, 4px) 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.character-card {
+		width: clamp(60px, 90%, 120px);
+	}
+
+	.character-card__label {
+		font-size: clamp(0.6rem, 4vw, 0.8rem);
+	}
+
+	.character-card__player-tag {
+		font-size: clamp(0.5rem, 3.5vw, 0.7rem);
+		padding: clamp(1px, 0.6vh, 3px) 0;
+	}
+}
+
+/* Special case for Justice: better contrast */
+.character-card[data-aspect='aggression'] .character-card__player-tag {
+	color: var(--text-color);
+}

@@ -1,0 +1,104 @@
+@import './styles/colors.css';
+@import './styles/fonts.css';
+@import './styles/design-system.css';
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Bangers&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Contrail+One&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Exo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Mohave:ital,wght@0,300..700;1,300..700&family=Oxanium:wght@200..800&family=Teko:wght@300..700&family=Tilt+Warp&display=swap');
+
+/* Base Styles */
+:root {
+	font-family: var(--font-body);
+	line-height: 1.5;
+	font-weight: var(--p-font-weight);
+
+	color-scheme: dark;
+	color: var(--text-color);
+	background-color: var(--background-color);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	width: var(--content-width);
+	margin: auto;
+	min-width: 320px;
+	min-height: 100vh;
+	background-color: var(--background-color);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-sans);
+	line-height: 1.1;
+	margin-bottom: var(--space-md);
+}
+
+h1 {
+	font-size: var(--text-3xl);
+	font-weight: var(--h1-font-weight);
+}
+
+h2 {
+	font-size: var(--text-2xl);
+	font-weight: var(--h2-font-weight);
+}
+
+h3 {
+	font-size: var(--text-xl);
+	font-weight: var(--h3-font-weight);
+}
+
+p {
+	margin-bottom: var(--space-md);
+}
+
+/* Links */
+a {
+	color: var(--leadership-color);
+	text-decoration: none;
+	transition: color var(--transition-fast);
+}
+
+a:hover {
+	color: color-mix(in srgb, var(--leadership-color) 80%, white);
+}
+
+/* Buttons */
+button {
+	cursor: pointer;
+	border: none;
+	background: none;
+	font: inherit;
+	color: inherit;
+}
+
+/* Images */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Focus Styles */
+:focus-visible {
+	outline: 2px solid var(--leadership-color);
+	outline-offset: 2px;
+}

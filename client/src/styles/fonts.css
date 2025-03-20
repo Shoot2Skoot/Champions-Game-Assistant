@@ -1,0 +1,19 @@
+:root {
+	--h1-font-size: 2.5em;
+	--h2-font-size: 2em;
+	--h3-font-size: 1.5em;
+	--h4-font-size: 1em;
+	--p-font-size: 1em;
+	--h1-font-weight: 900;
+	--h2-font-weight: 800;
+	--h3-font-weight: 600;
+	--h4-font-weight: 500;
+	--p-font-weight: 400;
+	--font-comic: 'Bangers', cursive;
+	--font-heading: 'Contrail One', cursive;
+	--font-body: 'Oxanium', cursive;
+	--font-mono: 'JetBrains Mono', monospace;
+	--font-sans: 'Alumni Sans', sans-serif;
+	--font-secondary: 'Exo', sans-serif;
+	--font-tall: 'Big Shoulders', sans-serif;
+}

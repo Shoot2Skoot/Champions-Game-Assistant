@@ -1,0 +1,150 @@
+/* Character Card Base */
+.character-card {
+	--aspect-color: var(--grey-dark);
+	display: inline-block;
+	text-align: center;
+	width: clamp(80px, 28%, 200px);
+	margin: var(--space-xs);
+	padding: var(--space-xxs);
+	font-family: var(--font-body);
+	vertical-align: top;
+	transition: transform var(--transition-normal);
+}
+
+/* Aspect Colors */
+.character-card[data-aspect='aggression'] {
+	--aspect-color: var(--aggression-color);
+}
+
+.character-card[data-aspect='leadership'] {
+	--aspect-color: var(--leadership-color);
+}
+
+.character-card[data-aspect='justice'] {
+	--aspect-color: var(--justice-color);
+}
+
+.character-card[data-aspect='pool'] {
+	--aspect-color: var(--pool-color);
+}
+
+.character-card[data-aspect='protection'] {
+	--aspect-color: var(--protection-color);
+}
+
+/* Image Container */
+.character-card__image-wrapper {
+	position: relative;
+	border: clamp(2px, 0.3vw, 3px) solid var(--aspect-color);
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	transition: all var(--transition-normal);
+}
+
+/* Character Image */
+.character-card__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+}
+
+/* Ready Checkbox */
+.character-card__checkbox {
+	position: absolute;
+	padding: 2%;
+	top: 4%;
+	right: 4%;
+	width: 15%;
+	height: 15%;
+	border: clamp(1px, 0.3vw, 3px) solid var(--aspect-color);
+	border-radius: var(--radius-full);
+	background-color: var(--background-color);
+	display: none;
+	color: var(--aspect-color);
+	z-index: var(--z-above);
+	font-size: var(--text-sm);
+}
+
+.character-card-ready .character-card__checkbox {
+	display: flex;
+}
+
+/* Player Tag */
+.character-card__player-tag {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: clamp(2px, 1vh, 6px) 0;
+	background-color: var(--aspect-color);
+	color: var(--background-color);
+	font-weight: var(--h3-font-weight);
+	display: none;
+	font-size: var(--text-sm);
+	font-family: var(--font-body);
+	text-transform: uppercase;
+	transition: all var(--transition-normal);
+}
+
+.character-card--with-player .character-card__player-tag {
+	display: flex;
+}
+
+/* Character Label */
+.character-card__label {
+	margin: auto;
+	margin-top: var(--space-xs);
+	font-size: var(--text-md);
+	text-wrap: wrap;
+	width: 100%;
+	line-height: 1.2;
+	font-family: var(--font-body);
+	font-weight: var(--h3-font-weight);
+	text-transform: uppercase;
+	color: var(--text-color);
+	text-align: center;
+}
+
+/* Hover Effects */
+@media (hover: hover) and (pointer: fine) {
+	.character-card:not(.character-card--selected):hover
+		.character-card__image-wrapper {
+		transform: scale(1.25);
+		box-shadow: var(--shadow-hover);
+		border-color: var(--leadership-color);
+		z-index: var(--z-above);
+	}
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 768px) {
+	.character-card {
+		width: clamp(70px, 45%, 150px);
+	}
+
+	.character-card__player-tag {
+		font-size: var(--text-xs);
+		padding: clamp(2px, 0.8vh, 4px) 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.character-card {
+		width: clamp(60px, 90%, 120px);
+	}
+
+	.character-card__label {
+		font-size: var(--text-sm);
+	}
+
+	.character-card__player-tag {
+		font-size: var(--text-xs);
+		padding: clamp(1px, 0.6vh, 3px) 0;
+	}
+}
+
+/* Special Cases */
+.character-card[data-aspect='aggression'] .character-card__player-tag {
+	color: var(--text-color);
+}
